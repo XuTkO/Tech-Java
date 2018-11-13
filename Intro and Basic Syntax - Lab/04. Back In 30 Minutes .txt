@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        int hours = Integer.parseInt(bf.readLine());
+        int minutes = Integer.parseInt(bf.readLine());
+
+        int minutesPlus30 = minutes + 30;
+
+        if (minutesPlus30 < 60){
+            System.out.println(hours+":"+minutesPlus30);
+        } else {
+            minutesPlus30(hours,minutesPlus30);
+        }
+
+    }
+
+    private static void minutesPlus30(int hour, int  minutesPlus30) {
+        if (hour+1 == 24){
+            hour = -1;
+        }
+        if (minutesPlus30 >= 60 && minutesPlus30 <=69){
+            System.out.println((hour+1)+":"+"0"+(minutesPlus30-60));
+        } else if (minutesPlus30 >= 70 && minutesPlus30 <=90){
+            System.out.println((hour+1)+":"+(minutesPlus30-60));
+        }
+    }
+
+}
