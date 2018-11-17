@@ -1,0 +1,30 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        String text = bf.readLine();
+
+        String correctPassword = new StringBuilder(text).reverse().toString();
+
+        for (int i = 0; i <= 3; i++) {
+            String password = bf.readLine();
+            if (password.equals(correctPassword)){
+                System.out.printf("User %s logged in.",text);
+                return;
+            } else {
+                if (i == 3) {
+                    break;
+                }
+                System.out.println("Incorrect password. Try again.");
+            }
+
+        }
+        System.out.printf("User %s blocked!",text);
+    }
+}

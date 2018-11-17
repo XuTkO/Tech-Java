@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        double IvanChoMoney = Double.parseDouble(bf.readLine());
+        int studentsCount = Integer.parseInt(bf.readLine());
+        double priceSaber = Double.parseDouble(bf.readLine());
+        double priceRobe = Double.parseDouble(bf.readLine());
+        double priceBelt = Double.parseDouble(bf.readLine());
+
+        int numSabers = (int) Math.ceil(studentsCount*0.1 + studentsCount);
+        int freeBelts = 0;
+
+        double totalSum = 0.0;
+        if (studentsCount/6 > 0){
+            freeBelts = studentsCount/6;
+        }
+
+        totalSum = numSabers*priceSaber + studentsCount*priceRobe + (studentsCount-freeBelts)*priceBelt;
+
+        if (totalSum <= IvanChoMoney) {
+            System.out.printf("The money is enough - it would cost %.2flv.",totalSum);
+        } else {
+            System.out.printf("Ivan Cho will need %.2flv more.",totalSum - IvanChoMoney);
+        }
+
+    }
+}

@@ -1,0 +1,43 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        int lostGamesCount = Integer.parseInt(bf.readLine());
+        double headsetPrice = Double.parseDouble(bf.readLine());
+        double mousePrice = Double.parseDouble(bf.readLine());
+        double keyboardPrice = Double.parseDouble(bf.readLine());
+        double displayPrice = Double.parseDouble(bf.readLine());
+
+        int trashedHeadset = 0;
+        int trashedMouse = 0;
+        int trashedKeyboard = 0;
+        int trashedDisplay = 0;
+        if (lostGamesCount/2 > 0){
+            trashedHeadset = lostGamesCount/2;
+        }
+        if (lostGamesCount/3 > 0){
+            trashedMouse = lostGamesCount/3;
+        }
+        for (int i = 1; i <= lostGamesCount; i++) {
+            if (i%2==0 && i%3 ==0){
+                trashedKeyboard++;
+                if (trashedKeyboard%2==0){
+                    trashedDisplay++;
+                }
+            }
+        }
+
+        double totalSum = headsetPrice*trashedHeadset + keyboardPrice*trashedKeyboard + mousePrice*trashedMouse
+                +displayPrice*trashedDisplay;
+
+
+        System.out.printf("Rage expenses: %.2f lv.",totalSum);
+    }
+}

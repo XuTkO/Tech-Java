@@ -1,0 +1,97 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        int numberOfGroup = Integer.parseInt(bf.readLine());
+        String typeOfGroup = bf.readLine();
+        String dayOfWeek = bf.readLine();
+
+        double sum = 1.0*numberOfGroup;
+
+        switch (dayOfWeek) {
+            case "Friday":
+                switch (typeOfGroup) {
+                    case "Students":
+                        if (numberOfGroup >= 30) {
+                            sum *= 8.45 * 0.85;
+                        } else {
+                            sum *= 8.45;
+                        }
+                        break;
+                    case "Business":
+                        if (numberOfGroup >= 100) {
+                            sum *= 10.90 - (10.90 * 10/numberOfGroup);
+                        } else {
+                            sum *= 10.90;
+                        }
+                        break;
+                    case "Regular":
+                        if (numberOfGroup >= 10 && numberOfGroup <= 20) {
+                            sum *= 15 * 0.95;
+                        } else {
+                            sum *= 15;
+                        }
+                        break;
+                }
+                break;
+            case "Saturday":
+                switch (typeOfGroup) {
+                    case "Students":
+                        if (numberOfGroup >= 30) {
+                            sum *= 9.80 * 0.85;
+                        } else {
+                            sum *= 9.80;
+                        }
+                        break;
+                    case "Business":
+                        if (numberOfGroup >= 100) {
+                            sum *= 15.60 - (15.60 * 10/numberOfGroup);
+                        } else {
+                            sum *= 15.60;
+                        }
+                        break;
+                    case "Regular":
+                        if (numberOfGroup >= 10 && numberOfGroup <= 20) {
+                            sum *= 20 * 0.95;
+                        } else {
+                            sum *= 20 ;
+                        }
+                        break;
+                }
+                break;
+            case "Sunday":
+                switch (typeOfGroup) {
+                    case "Students":
+                        if (numberOfGroup >= 30) {
+                            sum *= 10.46 * 0.85;
+                        } else {
+                            sum *= 10.46 ;
+                        }
+                        break;
+                    case "Business":
+                        if (numberOfGroup >= 100) {
+                            sum *= 16  - (16 * 10/numberOfGroup);
+                        } else {
+                            sum *= 16 ;
+                        }
+                        break;
+                    case "Regular":
+                        if (numberOfGroup >= 10 && numberOfGroup <= 20) {
+                            sum *= 22.50 * 0.95;
+                        } else {
+                            sum *= 22.50;
+                        }
+                        break;
+                }
+                break;
+
+        }
+        System.out.printf("Total price: %.2f", sum);
+    }
+}

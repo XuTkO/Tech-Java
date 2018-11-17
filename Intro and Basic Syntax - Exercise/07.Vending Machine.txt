@@ -1,0 +1,51 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        String coin = bf.readLine();
+        List<Double> coinsValues = new ArrayList<Double>(){{add(0.1);add(0.2);add(0.5);add(1.0);add(2.0);}};
+        double sum = 0.0;
+
+        while (!"Start".equals(coin)){
+            double currentCoin = Double.parseDouble(coin);
+            if (coinsValues.contains(currentCoin)){
+                sum+=currentCoin;
+            } else {
+                System.out.printf("Cannot accept %.2f%n",currentCoin);
+            }
+            coin = bf.readLine();
+        }
+
+        Map<String,Double> map = new HashMap<>(){{
+            put("Nuts",2.0);
+            put("Water",0.7);
+            put("Crisps",1.5);
+            put("Soda",0.8);
+            put("Coke",1.0);
+        }};
+
+        String product = bf.readLine();
+
+        while (!"End".equals(product)){
+            if (map.containsKey(product)){
+                if (map.get(product) <= sum){
+                    System.out.printf("Purchased %s%n",product);
+                    sum-=map.get(product);
+                } else {
+                    System.out.println("Sorry, not enough money");
+                }
+            } else {
+                System.out.println("Invalid product");
+            }
+            product=bf.readLine();
+        }
+        System.out.printf("Change: %.2f",sum);
+    }
+}

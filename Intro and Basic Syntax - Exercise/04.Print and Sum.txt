@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        int firstNum = Integer.parseInt(bf.readLine());
+        int secondNum = Integer.parseInt(bf.readLine());
+
+
+        int sum = 0;
+        for (int i = firstNum; i <= secondNum; i++) {
+            System.out.print(i + " ");
+            sum+=i;
+        }
+        System.out.println();
+        System.out.printf("Sum: %d",sum);
+    }
+}

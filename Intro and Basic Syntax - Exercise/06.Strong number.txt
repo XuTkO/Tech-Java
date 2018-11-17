@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        int num = Integer.parseInt(bf.readLine());
+
+        int mainNumber = num;
+
+        int sumOfAllDigitFactorials = 0;
+
+
+
+        while (num > 0) {
+            int lastNum = num%10;
+            int currentSum = 1;
+            for (int i = 1; i <= lastNum; i++) {
+                currentSum *= i;
+            }
+            sumOfAllDigitFactorials+=currentSum;
+            num /= 10;
+        }
+
+        if (mainNumber==sumOfAllDigitFactorials){
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
+    }
+}
